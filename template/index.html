@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ember.js • TodoMVC</title>
+
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <style type="text/css">
+      body{
+         -webkit-font-smoothing: antialiased;
+          -moz-font-smoothing: antialiased;
+          -ms-font-smoothing: antialiased;
+          -o-font-smoothing: antialiased;
+          font-smoothing: antialiased;
+      }
+
+      .content
+      {
+        height: 40%;
+      }
+
+      #title
+      {
+        padding-top: 0px;
+        margin-top: 0px;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+      }
+
+      #anchor
+      {
+        text-align: right;
+      }
+
+      #signup
+      {
+        display: block;
+        margin: 15px 0px 0px 1%;
+        padding-right: 28%;
+        font-family:Garamond, Georgia, serif;
+      }
+
+      #login
+      {
+        display: block;
+        margin: 15px 0px 0px 1%;
+        padding-right: 28%;
+        font-family:Garamond, Georgia, serif;
+
+      }
+
+      .information-label
+      {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: right;
+      }
+
+      .information-submit
+      {
+        margin-top: 20px;
+        margin: auto;
+        text-align: right;
+      }
+
+      .enable
+      {
+        border-radius: 20px;
+        box-shadow: 0px 0px 1px 1px gray;
+        padding: 3px;
+        margin: 5px;
+      }
+
+      .submit:hover
+      {
+        box-shadow: 0px 0px 10px 1px gray;
+      }
+
+      .btn
+      {
+        padding: 0px;
+
+      }
+
+      .enable
+      {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .enable:hover
+      {
+        box-shadow: 0px 0px 2px 2px rgba(150,150,150,0.9);
+      }
+
+      .enable:active
+      {
+        background-color: rgba(245,245,245,0.4);
+      }
+
+
+      #term
+      {
+        font-size: 14px;
+        color:rgba(100,100,100,0.9);
+      }
+
+      .form-control
+      {
+        height: 28px;
+        width: 56%;
+        display:inline;
+                  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      }
+
+      #loginButton
+      {
+        margin-right: 28%
+      }
+
+    </style>
+  </head>
+  <body>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <div class="row">
+      <div id="content" class="col-md-4 col-md-offset-4">
+        {{outlet}}
+     </div>
+    </div>  
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index/signup">
+  {{#unless completed}}
+        <div id="anchor">
+          {{#link-to 'index.login'}}Log In{{/link-to}}
+        </div>
+        <h1 id="title">
+          Sign up
+        </h1>
+        <div id ="signup">
+          <div class="information-label" {{bind-attr class="fullNameError:has-error:has-success"}}>
+            <label class="control-label" {{bindAttr for="user"}}>Full Name </label>
+            {{input id="user" value=fullname  class="form-control"}}   
+          </div>
+          <div class="information-label" {{bind-attr class="emailError:has-error:has-success"}}>
+            <label class="control-label" {{bindAttr for="email"}}>Email </label>
+            {{input class="form-control" name="password" value=email}}   
+           </div>
+          <div class="information-label"  {{bind-attr class="passwordError:has-error:has-success"}}>
+            <label  class="control-label" {{bindAttr for="password"}}> Password </label>
+            {{input class="form-control" type="password" name="password" value=password}}   
+          </div>
+          <div class="information-label"  {{bind-attr class="confirmError:has-error:has-success"}}>
+            <label class="control-label" {{bindAttr for="passwordValidation"}}>Confirm Password </label>
+            {{input class="form-control" type="password" name=" password" value=passwordConfirm}}   
+          </div>
+          <div id="term" class="information-label" {{bind-attr class="termError:has-error:has-success"}}>
+            <label  class="control-label"  {{bindAttr for="term"}}>I accept the terms of services</label>
+            {{input  type="checkbox" name="term" checked=term}}   
+          </div>
+          <div class="information-label">
+            <button  {{action "signup"}} {{bind-attr class="isProcessing:disable:enable"}}>
+              Sign up
+            </button>  
+          </div>
+        </div>
+         {{#if errors}}
+            <div class="alert alert-danger">
+             {{#each errors}}
+             <ul>
+              <li>{{.}}</li>
+            </ul>
+             {{/each}}
+            </div>
+          {{/if}}
+          {{else}}
+          <div>
+            <h3>
+              Registration Successful please <a style="cursor:pointer;"{{action redirect href=true}}>Log In</a>
+            </h3>
+          </div>
+        {{/unless}}
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index/login">
+        <div id="anchor">
+          {{#link-to 'index.signup'}}Sign up{{/link-to}}
+        </div>
+        <h1 id="title">
+          Log In
+        </h1>
+        <div id ="login">
+           <div class="information-label" {{bind-attr class="fullNameError:has-error:has-success"}}>
+            <label class="control-label" {{bindAttr for="user"}}>Full Name </label>
+            {{input id="user" value=fullname  class="form-control" placeholder="User or Email"}}   
+          </div>
+          <div class="information-label" {{bind-attr class="emailError:has-error:has-success"}}>
+            <label class="control-label" {{bindAttr for="email"}}>Password </label>
+            {{input class="form-control" name="password" type="password" value=password}}   
+           </div>
+        </div>
+          <div class="information-label">
+            <button id="loginButton" {{action "login"}} {{bind-attr class="isProcessing:disable:enable"}}>
+              Log In
+            </button>  
+        </div>
+
+        {{#if errors}}
+          <div class="alert alert-danger">
+           {{#each errors}}
+           <ul>
+            <li>{{.}}</li>
+          </ul>
+           {{/each}}
+          </div>
+        {{/if}}
+
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index/congratulation">
+    <div>
+      <h3>
+        Registration Successful please {{#link-to 'index.login'}}Log In{{/link-to}}
+      </h3>
+    </div>
+  </script>
+
+  <script src="../static/js/libs/jquery-1.9.1.js"></script>
+  <script src="../static/js/libs/handlebars-1.0.0.js"></script>
+  <script src="../static/js/libs/ember-1.0.0.js"></script>
+  <script src="../static/js/libs/ember-data.js"></script>
+  <script src="../static/js/libs/local_storage_adapter.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"type="text/javascript"></script>
+  <script src="../static/js/app.js"></script>
+  <script src="../static/js/router.js"></script>
+  <script src="../static/js/models/user.js"></script>
+  <script src="../static/js/controllers/login_controller.js"></script>
+  </body>
+</html>

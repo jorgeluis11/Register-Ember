@@ -1,0 +1,257 @@
+/* CSS from http://todomvc.com/ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  /*-moz-appearance: none;*/
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  /*background: #eaeaea url('bg.png');*/
+  color: #4d4d4d;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+#todoapp {
+  width: 30%; position: relative;
+  margin-top: 150px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 1px 1px  rgba(68,68,68,0.6);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+#todoapp input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+#todoapp input:-moz-placeholder {
+  font-style: italic;
+  color: #a9a9a9;
+}
+
+#main {
+   margin-top: 40%;
+}
+
+#header  {
+  padding: 8px;
+  padding-bottom: 0px;
+  border-radius: inherit;
+  border-bottom: 1px dotted gray;
+  background-color:#D9FBFF;
+}
+
+#header-text
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 4px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  display: inline-block;
+  color:black;
+  text-shadow: 1px 1px gray ;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}
+
+#header2-text
+{
+font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  margin-top:0px;
+  margin-left:4px;
+  margin-bottom:2px;
+  font-size: 24px;
+  display: inline-block;
+  color: rgba(254,0,2,0.8);
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}
+#create
+{
+font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  float: right;
+  background: #86AEB2;
+  width: 60px;
+  padding: 2px 1px;
+  border-radius: 3px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  font-size:16px;
+
+}
+
+#create:hover
+{
+  background: #426265;
+}
+
+#list
+{
+  list-style: none;
+  padding-left: 5px;
+}
+
+#list > li{
+  padding:0px;
+}
+
+
+#pdf-img
+{
+  width: 15px;
+  height: 20px;
+}
+
+#list{
+  margin: 0px;
+  padding-left: 0px;
+}
+#list li a
+{
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 2.0em; 
+  display: block;
+  padding-left: 5px;
+  width: 90%;
+  color:black;
+}
+
+
+#list li
+{
+  border-bottom: dashed #CCCCCC 1px;
+  padding-left: 5px;
+  height: 35px;
+}
+
+#list li a{
+float:left;
+}
+#list li .destroy{
+  float:left;  
+  color:red;
+  width: 20px;
+  height: 20px;
+  bottom:10px;
+  margin-top: 5px;
+  font-size: 22px;
+  display: none;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+#list li:hover .destroy
+{
+  display:inline-block;
+}
+
+.destroy:hover
+{
+  text-shadow: 0 0 1px #000, 0 0 5px rgba(199, 107, 107, 0.8);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#list li:hover
+{
+  background-color:rgba(250,250,250,0.8);
+}
+
+#list li:hover a:after:hover
+{
+  color:black;
+}
+
+#list li:only-of-type
+{
+  border:none;
+};
+
+#list li:first-of-type
+{
+  border-top:none;
+};
+
+#list li:last-of-type
+{
+  border:none;
+  color:red;
+};
+
+#left-column
+{
+ 
+}
+
+#right-column
+{
+  width: 595px;
+  height: 842px;
+  margin-left: 2%;
+  margin-right: 2%;
+  float:right;
+  box-shadow: 
+  -webkit-box-shadow: 0px 0px 17px rgba(50, 50, 50, 1);
+  -moz-box-shadow:    0px 0px 17px rgba(50, 50, 50, 1);
+  box-shadow:         0px 0px 17px rgba(50, 50, 50, 1);
+  margin-top: 22px;
+  padding:1cm;
+}
+
+
+.row
+{
+  margin-top: 15%;
+}
+
+#content
+{
+  box-shadow: 0px 0px 2px 2px gray;
+}
+
+#title
+{
+  text-align: center;
+}
